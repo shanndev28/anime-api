@@ -12,11 +12,11 @@ import SearchAnime from './library/routes/SearchAnime.js'
 dotenv.config()
 const app = express()
 
-// async function as() {
-//     await db.sync();
-// }
+async function as() {
+    await db.sync();
+}
 
-// as()
+as()
 
 const sessionStore = sequelizeStore(session.Store)
 const store = new sessionStore({ db: db })
@@ -44,25 +44,5 @@ app.use(Fav)
 app.use(History)
 app.use(SearchAnime)
 
-// store.sync()
+store.sync()
 app.listen(process.env.APP_PORT, () => console.log("Server up and running on " + process.env.APP_PORT))
-
-
-
-// import axios from 'axios'
-// import cheerio from 'cheerio'
-
-// const getAnimeOngoing = async () => {
-//     await axios.get("https://oploverz.co.id/ongoing/")
-//         .then(({ data }) => {
-//             let $ = cheerio.load(data)
-
-//             $("div.main-col > div.xrelated").get().map(async (a, b) => {
-//                 let url = $(a).find("a").attr("href")
-
-//                 console.log(url)
-//             })
-//         })
-// }
-
-// getAnimeOngoing()
